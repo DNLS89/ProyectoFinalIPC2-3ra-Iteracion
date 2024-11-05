@@ -1,0 +1,66 @@
+
+<div class="container">
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/inicio" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <!--<svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>-->
+          <span class="fs-4">{{nombreUsuarioCuenta}}</span>
+      </a>
+      <nav>
+      <ul>
+        <li>
+          <a>Anuncios▾</a>
+          <ul class="dropdown">
+            <div *appRoles="['ADMINISTRADOR']">
+              <li class="nav-item" ><a routerLink="/menu/gestorAnuncios/crearAnuncio" class="nav-link" routerLinkActive="active" aria-current="page">Crear Anuncios</a></li>
+              <li class="nav-item" ><a routerLink="/menu/gestorAnuncios/modificarAnuncios" class="nav-link" routerLinkActive="active" aria-current="page">Modificar Anuncios</a></li>
+              <li class="nav-item" ><a routerLink="/menu/gestorAnuncios/estadoAnuncio" class="nav-link" routerLinkActive="active" aria-current="page">Cambiar estado Anuncios</a></li>
+            </div>
+            <div *appRoles="['ANUNCIADOR', 'ADMINISTRADOR']">
+              <li class="nav-item" ><a routerLink="/menu/gestorAnuncios/comprarAnuncio" class="nav-link" routerLinkActive="active" aria-current="page">Comprar Anuncios</a></li>
+            <li class="nav-item" ><a routerLink="/menu/gestorAnuncios/estadoAnuncioAnunciador" class="nav-link" routerLinkActive="active" aria-current="page">Cambiar estado Anuncios</a></li>
+            </div>
+          </ul>
+        </li>
+
+        <li class="nav-item" ><a routerLink="/menu/tienda" class="nav-link" routerLinkActive="active" aria-current="page">Tienda</a></li> 
+      
+        <li>
+          <a>Revistas ▾</a>
+          <ul class="dropdown">
+            <li class="nav-item" ><a routerLink="/menu/explorarRevistas" class="nav-link" routerLinkActive="active" aria-current="page" >Explorar Revistas</a></li>
+            <li class="nav-item" ><a routerLink="/menu/revistasSuscritas" class="nav-link" routerLinkActive="active" aria-current="page">Revistas Suscritas</a></li>
+
+            <div *appRoles="['EDITOR', 'ADMINISTRADOR']">
+              <li class="nav-item" ><a routerLink="/menu/publicarRevista" class="nav-link" routerLinkActive="active" aria-current="page">Publicar Revista</a></li>
+              <li class="nav-item" ><a routerLink="/menu/revistasPublicadas" class="nav-link" routerLinkActive="active" aria-current="page">Revistas Publicadas</a></li>
+            </div>
+          </ul>
+        </li>
+        
+        <li class="nav-item" (click)="editarPerfilComponent?.ngOnInit()"><a routerLink="/menu/editarPerfil" class="nav-link" routerLinkActive="active" aria-current="page">Editar Perfil</a></li>
+        <li class="nav-item"><a routerLink="/login" class="nav-link" routerLinkActive="active" aria-current="page" (click)="myFunc()">Cerrar Sesión</a></li>
+
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<!-- <div class="flex">  -->
+
+  <!-- <aside class="col-md-3 bg-dark text-white" style="padding : 50px;"> 
+    <app-anuncios-media></app-anuncios-media> 
+  </aside> -->
+  <main>
+    <section class="section">
+        <div class="container">
+
+          <div >
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+    </section>
+  </main>
+
+<!-- </div> -->
+
+<app-footer></app-footer>
